@@ -1,0 +1,645 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mazius', sans-serif;
+    transition: all 0.4s ease;;
+}
+
+@import url(//db.onlinewebfonts.com/c/7e5d4b5e37c0623759cbed868eb8c2ba?family=MAZIUS+REVIEW+20.09);
+
+@font-face {
+    font-family: "MAZIUS REVIEW 20.09"; 
+    src: url("//db.onlinewebfonts.com/t/7e5d4b5e37c0623759cbed868eb8c2ba.eot");
+     src: url("//db.onlinewebfonts.com/t/7e5d4b5e37c0623759cbed868eb8c2ba.eot?#iefix")
+      format("embedded-opentype"), url("//db.onlinewebfonts.com/t/7e5d4b5e37c0623759cbed868eb8c2ba.woff2")
+       format("woff2"), url("//db.onlinewebfonts.com/t/7e5d4b5e37c0623759cbed868eb8c2ba.woff")
+        format("woff"), url("//db.onlinewebfonts.com/t/7e5d4b5e37c0623759cbed868eb8c2ba.ttf") 
+        format("truetype"), url("//db.onlinewebfonts.com/t/7e5d4b5e37c0623759cbed868eb8c2ba.svg#MAZIUS REVIEW 20.09")
+         format("svg"); }
+
+/* ===== Colours ===== */
+:root{
+    --body-color: #E4E9F7;
+    --nav-color: #dad2cb;
+    --side-nav: #b09e8f;
+    --text-color: #1b1b1b;
+    --search-bar: #F2F2F2;
+    --search-text: #010718;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--body-color);
+    font-family: "MAZIUS REVIEW 20.09", sans-serif;
+}
+
+body.dark{
+    --body-color: #18191A;
+    --nav-color: #242526;
+    --side-nav: #242526;
+    --text-color: #CCC;
+    --search-bar: #242526;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--nav-color);
+    z-index: 100;
+}
+
+body.dark nav{
+    border: 1px solid #393838;
+
+}
+
+nav .nav-bar{
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen{
+    color: var(--text-color);
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav .nav-bar .logo a{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.navLogo{
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    padding: 10px;
+}
+.menu .logo-toggle{
+    display: none;
+}
+
+.nav-bar .nav-links{
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .nav-links li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.nav-links li a{
+    position: relative;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.nav-links li a::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover a::before{
+    opacity: 1;
+}
+
+.nav-bar .darkLight-searchBox{
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.dark-light i,
+.searchToggle i{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-light i.sun{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active i.sun{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active i.moon{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle i.cancel{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active i.cancel{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active i.search{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox{
+    position: relative;
+}
+
+.searchBox .search-field{
+    position: absolute;
+    bottom: -85px;
+    right: 5px;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchToggle.active ~ .search-field{
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-field::before{
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: var(--nav-color);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.search-field input{
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+
+body.dark .search-field input{
+    color: var(--text-color);
+}
+
+.search-field i{
+    position: absolute;
+    color: var(--nav-color);
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+body.dark .search-field i{
+    color: var(--text-color);
+}
+
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen{
+        display: block;
+    }
+
+    .menu{
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: -100%;
+        top: 0;
+        padding: 20px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu{
+        left: -0%;
+    }
+
+    nav.active .nav-bar .navLogo a{
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle{
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .siderbarClose{
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a{
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+  
+    
+  /* ===== Carousel Slider ===== */
+
+    .carousel {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        margin-top: 80px;
+    }
+      
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .slide {
+        opacity: 0;
+        transition: opacity 0.5s, transform 0.5s cubic-bezier(0.39, 0.575, 0.565, 1.0);
+        transform: scale(0.8);
+        }
+        
+        .slide.active-slide {
+        opacity: 1;
+        transform: scale(1);
+        }
+      
+      .slide-content {
+        color: #fff;
+        text-align: center;
+      }
+      
+      .slide-content h2 {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+      }
+      
+      .slide-content p {
+        font-size: 1.5em;
+        margin-bottom: 1em;
+      }
+      
+      .btn {
+        font-weight: 600;
+        display: inline-block;
+        max-width: 168px;
+        width: 100%;
+        text-transform: uppercase;
+        font-size: 12px;
+        height: 45px;
+        letter-spacing: 1px;
+        line-height: 43px;
+        background: #fff;
+        color: #000;
+        margin: 0 5px;
+        text-align: center;
+        border-radius: 25px;
+        -moz-border-radius: 25px;
+        -webkit-border-radius: 25px;
+         cursor: pointer;
+       transition: background-color 0.3s ease;
+       -webkit-transition: background-color 0.3s ease;
+       -moz-transition: background-color 0.3s ease;
+       -ms-transition: background-color 0.3s ease;
+       -o-transition: background-color 0.3s ease;
+       
+}
+
+      
+      .btn:hover {
+        background-color: #333;
+        color: black;
+      }
+      
+      .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2em;
+        cursor: pointer;
+        z-index: 1;
+      }
+      
+      .prev {
+        left: 40px;
+      }
+      
+      .next {
+        right: 40px;
+      }
+      
+
+/* Section and Cards Styling*/
+
+
+  /*.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    line-height:46.8px;
+  }
+  
+  .header h2 {
+    font-size: 48px;
+    
+  }*/
+
+   /* Styles for cards */
+
+  .header h2 i {
+       
+        font-style: italic;
+        position: relative;
+        padding: 0 5px;
+        z-index:1;
+    
+    }
+
+  .header h2 i::after {
+    content: "";
+    width: 100%;
+    height: 15px;
+    background: #fbefc5;
+    position: absolute;
+    border: 0;
+    left: 0;
+    bottom: 4px;
+    z-index: -1;
+}
+ 
+/* Add a border box to the entire section */
+.section {
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  
+  /* Style the header with a gradient background */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #cd9e38, #f12711);
+    color: white;
+    font-size: 24px;
+  }
+  
+  
+  /* Style the cards container */
+  .centered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  /* Style each individual card */
+  .card {
+  position: relative;
+  width: 160px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+ 
+}
+  
+  /* Add a hover effect on the card */
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Style the image inside the card */
+  .card-image {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .category {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color:transparent;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .heading {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.3;
+  }
+
+  .dark {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .dark .card {
+    background-color: #444;
+  }
+  
+  .dark .card h3 {
+    color: #fff;
+  }
+
+#btn-card-section {
+    background: /*linear-gradient(90deg, #1e2c48 50%, #2d426c 50%)*/ transparent;
+    background-size: 210% 100%;
+    background-position: 194% 0;
+    border-color: #1e2c48;
+    padding: .85em 1.75em;
+    cursor: pointer;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    color: white;
+    width: 80%;
+    display: block;
+    text-align: center;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#btn-card-section:hover {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.50);
+}
+
+
+a, a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+div {
+
+    display: block;
+}
+
+/* Footer Styling */
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #dad2cb;
+    color: #333;
+}
+
+.container a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.container a:hover {
+    color: #f2f2f2;
+}
+
+.container .social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.container .social-icons a {
+    color: #fff;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.container .social-icons a:hover {
+    color: #f2f2f2;
+}
+.dark .container {
+    background-color: #333 !important;
+    color: #fff;
+  }
+ .dark .container .social-icons a {
+    color: #fff;
+ }
+ .dark .container a {
+    color: #fff !important;
+  }
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container .social-icons {
+        margin-top: 20px;
+    }
+}
+

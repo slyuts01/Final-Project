@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stela L Portfolio Website</title>
+    <!-- =====  CSS ===== -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- ===== Google Fonts ===== -->
+    <link href="//db.onlinewebfonts.com/c/7e5d4b5e37c0623759cbed868eb8c2ba?family=MAZIUS+REVIEW+20.09" rel="stylesheet" type="text/css"/>
+    <!-- ===== Boxicons CSS ===== -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  </head>
+  <body>
+    <nav>
+        <div class="nav-bar">
+            <i class="bx bx-menu sidebarOpen" ></i>
+            <span class="logo navLogo">
+                <img src="img/slogo.svg" alt="Stela Logo" height="50px width=50px">
+            </span>
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="index.html">Stela</a></span>
+                    <i class="bx bx-x siderbarClose"></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class="bx bx-moon moon"></i>
+                    <i class="bx bx-sun sun"></i>
+                </div>
+
+                <div class="searchBox">
+                   <div class="searchToggle">
+                    <i class="bx bx-x cancel"></i>
+                    <i class="bx bx-search search"></i>
+                   </div>
+
+                    <div class="search-field">
+                        <input type="text"  area-label = "s" placeholder="Search...">
+                        <i class="bx bx-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="carousel">
+        <div class="slide active-slide" style="background-image: url('img/bg-green.svg');">
+          <div class="slide-content">
+            <h2>Slide 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#" class="btn">Button</a>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url('img/bg-purple.svg');">
+          <div class="slide-content">
+            <h2>Slide 2</h2>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="#" class="btn">Button</a>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url('img/bg-yellow.svg');">
+          <div class="slide-content">
+            <h2>Slide 3</h2>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            <a href="#" class="btn">Button</a>
+          </div>
+        </div>
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+      </div>
+      
+      <div class="section">
+        <div class="header">
+          <h2>
+            Section
+           <i>Title</i>
+        </h2>
+          <button id="btn-card-section">Click Me</button>
+        </div>
+        <div class="centered">
+            <section class="cards">
+            <article class="card">
+            <div class="card-image">
+                <a href="#">
+                <img src="/Assets/img/Icons/Art_icon.png" alt="about section bacground paintbrush strokes" width="80%" height="99%">
+                </a>
+                </div>
+            <div class="category"> Illustration background </div>
+            <div class="heading"> A background of a section created with water color paint brush
+            </div>
+        </article>
+            <article class="card">
+            <div class="card-image">
+                <a href="#">
+                <img src="/Assets/img/Icons/Code_icon.png"  alt="Stela Logo" width="80%" height="99%">
+                </a>
+                </div>
+            <div class="category"> Brand Logo </div>
+            <div class="heading"> SVG file of a custom made logo depicting my initial and what I do 
+            </div>
+        </article>
+            <article class="card">
+            <div class="card-image">
+                <a href="#">
+                <img src="/Assets/img/Icons/Illustrato_icon.png" alt="Stela Logo" width="80%" height="99%">
+                </a>
+                </div>
+            <div class="category"> Illustration </div>
+            <div class="heading"> SVG illustration of me created in Adobe Illustrator  
+            </div>
+        </article>
+                <article class="card">
+            <div class="card-image">
+                <a href="#">
+                <img src="/Assets/img/Icons/UXUI_icon.png" alt="site banner" width="80%" height="100%">
+                </a>
+                </div>
+            <div class="category"> Site Banner </div>
+            <div class="heading"> SVG format banner created using custom fonts in Adobe Illustrator
+            </div>
+        </article>
+                <article class="card">
+            <div class="card-image">
+                <a href="#">
+                <img src="/Assets/img/Icons/Text_icon.png" alt="brand pattern" width="80%" height="99%">
+                </a>
+                </div>
+            <div class="category"> Brand Pattern </div>
+            <div class="heading"> Pattern containing variation of logos, illustrations and icons  
+            </div>
+        </article>
+      </div>
+      </div>
+      <footer>
+        <div class="container">
+          <div class="footer-links">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+            <a href="#">Link 5</a>
+          </div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </footer>
+
+	<script src="js/app.js"></script>
+  </body>
+</html>
